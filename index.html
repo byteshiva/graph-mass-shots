@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Python and Leaflet.js Example</title>
+  <title>Mass Shooting USA - Maps</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
@@ -25,7 +25,12 @@
     // Add the data to the map as markers
     data.forEach(function(item) {
       var marker = L.marker([item.lat, item.lon]).addTo(map);
-      marker.bindPopup(item.name);
+
+      var href = item.sources[0];
+      var popup = '<a href="' + href + '" target="_new">' + 'Mass shooting reported at ' + item.name + '</a>';
+
+      marker.bindPopup(popup);
+    //   marker.bindPopup(item.sources[0]);
     });
   </script>
 </body>
